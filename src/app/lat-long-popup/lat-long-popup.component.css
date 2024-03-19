@@ -1,0 +1,7 @@
+#mapbutton:hover{
+    border: 1px solid aliceblue;
+    
+}
+#mapbutton{
+    background-color: rgb(0, 110, 15);
+}

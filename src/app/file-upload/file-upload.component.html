@@ -1,0 +1,50 @@
+<div class="container-fluid">
+
+        
+<div class="body" style="height: 705px; width: 100%;">
+     
+        <form action method="post">
+
+                <h1 style="font-family: 'Times New Roman', Times, serif; font-size: 30px; font-weight: bold;">Surveys Upload</h1>
+                
+                      <div class="vertical-line"></div>
+                      <div class="panel" style="padding: 1%; width:50%; margin: auto; margin-top: 10%; border-radius: 2%; 	box-shadow: 0 14px 28px 10px rgba(0,0,0,0.25), 
+			0 10px 30px 10px rgba(0,0,0,0.22); ">
+                        <div class="panel-body">
+                                <div class="form-group file-area" style="margin-top: 70px;">
+                                        <label for="images">File <span>Upload the required File</span></label>
+                
+                                        <input type="file" name="images" id="images" required="required" multiple="multiple"
+                                                (change)="onFileChange($event)" accept=".xlsx, .xls">
+                                        <div class="file-dummy">
+                                                <div class="success">Great, your files are selected. Keep on.</div>
+                                                <div class="default">Please select some files</div>
+                
+                                        </div>
+                                </div>
+                
+                                <div class="form-group">
+                                        <button class="button" (click)="uploadFile()">Upload</button>
+                
+                                </div>
+                                <div class="form-group">
+                                        <button class="button" (click)="DownloadFile()">Download Sample File</button>
+                
+                                </div>
+                                
+                                </div>
+                </div>
+                
+
+        </form>
+
+
+
+
+
+
+       
+
+
+</div>
+</div>

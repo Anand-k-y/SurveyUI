@@ -1,0 +1,129 @@
+<div class="container-fluid ">
+    <div style="opacity: 50%; display: flex;">
+        <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" role="button" routerLink="/dashboard">User
+            Enrollment</span>
+        <mat-icon>navigate_next</mat-icon>
+        <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" role="button">New User</span>
+    </div>
+    <div class="vertical-line"></div>
+    <div class="panel" style="padding: 1%;">
+        <div class="panel-body">
+            <form class="form " [formGroup]="dataGroup" #f="ngForm">
+                <input type="hidden" formControlName="id">
+                <input type="hidden" formControlName="isSurveyUser">
+                <input type="hidden" formControlName="isBridgeUser">
+                <input type="hidden" formControlName="bridgeRole">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-12">
+                       
+                       <input type="checkbox" [checked]="isSurveyChecked" (click)="OnSurveyCheck()">
+                       <label style="font-weight: normal;">&nbsp;Is Survey User </label>
+                       
+                       <input type="checkbox" style="margin-left: 50px;" (click)="OnBridgeCheck()" [checked]="isBridgeChecked">
+                       <label style="font-weight: normal;">&nbsp;Is Bridge User </label>
+                       
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-12">
+                        <label>Role</label>
+                        <select class="form-control" aria-label="Select option" formControlName="role"
+                            style="color: rgb(116, 116, 116);" on-change="onSelectChange()" >
+                            <option value="">--ROLE--</option>
+                            <option value="Administrator" *ngIf="UserRole=='Administrator'" ><a routerLink="/UserEnrollment/Administrator/Form/0">Administrator</a></option>
+                            <option value="NetworkPlanner" *ngIf="UserRole=='NetworkPlanner'|| UserRole=='Administrator'" selected><a routerLink="/UserEnrollment/NetworkPlanner/Form/0">Network Planner</a></option>
+                            <option value="Contractor" *ngIf="UserRole=='NetworkPlanner'|| UserRole=='Administrator'" ><a role="button" routerLink="/UserEnrollment/Contractor/Form/0" >Contractor</a></option>
+                            <option value="Surveyor"  ><a routerLink="/UserEnrollment/Surveyor/Form/0">Surveyor</a></option>
+                            
+                        </select>
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['role'].hasError('required') && dataGroup.controls['role'].touched">
+                            Role is Required</span>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 20px;" *ngIf="isBridgeChecked">
+                    <div class="col-12" >
+                        <label>Bridge Role</label>
+                       <ul style="list-style: none;">
+                        <li>
+                            <input type="checkbox" name="" value="" (click)="OnRFCheck()" [checked]="isRF">&nbsp; 
+                            <label >RF</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="" value="" (click)="OnRSCheck()" [checked]="isRS232">&nbsp;
+                            <label >RS232</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="" value="" (click)="OnBLECheck()" [checked]="isBLE">&nbsp;
+                            <label >BLE</label>
+                        </li>
+                       </ul>
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['role'].hasError('required') && dataGroup.controls['role'].touched">
+                            Role is Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label>Name</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="Enter Your Name">
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['name'].hasError('required') && dataGroup.controls['name'].touched">
+                            Name is Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label>Phone:</label>
+                        <input type="text" class="form-control" formControlName="mobileNo" maxlength="10" placeholder="Enter Mobile Number">
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['mobileNo'].hasError('required') && dataGroup.controls['mobileNo'].touched">
+                            Mobile number is required</span>
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['mobileNo'].hasError('pattern') && dataGroup.controls['mobileNo'].touched">
+                            Only numbers are allowed</span>
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['mobileNo'].hasError('invalidMobileNumber') && dataGroup.controls['mobileNo'].touched">
+                            Invalid mobile number (should be 10 digits)</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label>Email </label>
+                        <input type="text" class="form-control" formControlName="email">
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['email'].hasError('required') && dataGroup.controls['email'].touched">Email
+                            is required</span>
+                        <span class="text-danger"
+                            *ngIf="!dataGroup.controls['email'].valid && dataGroup.controls['email'].touched && !dataGroup.controls['email'].hasError('required')">Email
+                            is not valid</span>
+                    </div>
+                </div>
+                <div class="row">
+        
+                    <div class="col-12">
+                        <label>Password</label>
+                        <input type="text" class="form-control" formControlName="password">
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['password'].hasError('required') && dataGroup.controls['password'].touched">Password
+                            is Required</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label>Address</label>
+                        <input type="text" class="form-control" formControlName="address">
+                        <span class="text-danger"
+                            *ngIf="dataGroup.controls['address'].hasError('required') && dataGroup.controls['address'].touched">Address
+                            is Required</span>
+                    </div>
+                </div>
+                <input type="button" value="Submit" class="btn btn-success" *ngIf="!update && f.valid" on-click="Register(f.value)">
+                <input type="button" value="Update" class="btn btn-primary" *ngIf="update && f.valid" on-click="Update(f.value)">
+                <p *ngIf="!f.valid">*Enter the all the fields</p>  
+            </form>
+            </div>
+    </div>
+    
+</div>

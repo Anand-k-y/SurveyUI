@@ -1,0 +1,25 @@
+<mat-dialog-content>
+    <h2>Gateway Data</h2>
+    <table mat-table [dataSource]="parsedData" >
+      
+      <!-- Key Column Definition -->
+      <ng-container matColumnDef="key">
+        <th mat-header-cell *matHeaderCellDef> Key </th>
+        <td mat-cell *matCellDef="let element"> {{element.key}} </td>
+      </ng-container>
+  
+      <!-- Value Column Definition -->
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef> Value </th>
+        <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+  

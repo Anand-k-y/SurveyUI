@@ -1,0 +1,37 @@
+<div class="main-div" style="margin-top: -30px;">
+    <div class="container" id="container" style="margin: 0px;">
+        <div class="form-container sign-in-container">
+            <form >
+                <h1>User Login</h1>
+                <br> 
+                <input type="text" class="form-control" name="email" placeholder="Enter Email" [(ngModel)]="email" *ngIf="!data" />
+           
+                <div class="userInput" *ngIf="data">
+                    <input #input1 type="text"  maxlength="1" class="uInput" on-input="Check(input1,input2)" name="otp" [(ngModel)]="otp1" >
+                    <input #input2 type="text"  maxlength="1" class="uInput" on-input="Check(input2,input3)" name="otp" [(ngModel)]="otp2" >
+                    <input #input3 type="text"  maxlength="1" class="uInput" on-input="Check(input3,input4)" name="otp" [(ngModel)]="otp3" >
+                    <input #input4 type="text"  maxlength="1" class="uInput" on-input="Check(input4,input5)" name="otp" [(ngModel)]="otp4" >
+                    <input #input5 type="text"  maxlength="1" class="uInput" on-input="Check(input5,input6)" name="otp" [(ngModel)]="otp5" >
+                    <input #input6 type="text"  maxlength="1" class="uInput" on-input="Check(input6,null)" name="otp"   [(ngModel)]="otp6" >
+
+                </div>
+                <br>
+                <button on-click="login()" *ngIf="data" >Login</button>
+                <button on-click="GetOTP()" *ngIf="!data">Get Otp</button>
+                <span *ngIf="returnData" class="text-danger">Login Failed</span>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+
+                <div class="overlay-panel overlay-right">
+                    <div>
+                        <img src="assets/image001.png" alt="" height="150" width="300">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

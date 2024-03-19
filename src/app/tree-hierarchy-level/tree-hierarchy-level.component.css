@@ -1,0 +1,9 @@
+.font{
+    font-family: 'Times New Roman', Times, serif; font-size: x-large;
+}
+#panel_style{
+    background-color: rgb(88, 97, 146); padding: 20px;
+}
+.buton{
+    background-color: rgb(53, 56, 80);
+}

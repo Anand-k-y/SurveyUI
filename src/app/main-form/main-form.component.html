@@ -1,0 +1,97 @@
+
+<div class="container-fluid ">
+    <div style="opacity: 50%; display: flex;">
+        <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" routerLink="/dashboard">User
+            Enrollment</span>
+        <mat-icon>navigate_next</mat-icon>
+        <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" role="button">New User</span>
+    </div>
+    <div class="vertical-line"></div>
+    <form class="form " [formGroup]="dataGroup" #f="ngForm">
+        <input type="hidden" formControlName="id">
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-12">
+                <label>Role</label>
+                <select class="form-control" aria-label="Select option" formControlName="role"
+                    style="color: rgb(116, 116, 116);" on-change="onSelectChange()">
+                    <option value="">--Select--</option>
+                    <option value="Administrator"><a routerLink="/UserEnrollment/Administrator/Form/0">Administrator</a>
+                    </option>
+                    <option value="NetworkPlanner"><a routerLink="/UserEnrollment/NetworkPlanner/Form/0">Network
+                            Planner</a></option>
+                    <option value="Contractor"><a role="button"
+                            routerLink="/UserEnrollment/Contractor/Form/0">Contractor</a></option>
+                    <option value="Surveyor"><a routerLink="/UserEnrollment/Surveyor/Form/0">Surveyor</a></option>
+
+
+                </select>
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['role'].hasError('required') && dataGroup.controls['role'].touched">
+                    Role is Required</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>Name:</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['name'].hasError('required') && dataGroup.controls['name'].touched">
+                    Name is Required</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>Phone:</label>
+                <input type="text" class="form-control" formControlName="mobileNo" maxlength="10"
+                    placeholder="Enter Mobile Number">
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['mobileNo'].hasError('required') && dataGroup.controls['mobileNo'].touched">
+                    Mobile number is required</span>
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['mobileNo'].hasError('pattern') && dataGroup.controls['mobileNo'].touched">
+                    Only numbers are allowed</span>
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['mobileNo'].hasError('invalidMobileNumber') && dataGroup.controls['mobileNo'].touched">
+                    Invalid mobile number (should be 10 digits)</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>Email: </label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Enter Email">
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['email'].hasError('required') && dataGroup.controls['email'].touched">Email
+                    is required</span>
+                <span class="text-danger"
+                    *ngIf="!dataGroup.controls['email'].valid && dataGroup.controls['email'].touched && !dataGroup.controls['email'].hasError('required')">Email
+                    is not valid</span>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-12">
+                <label>Password:</label>
+                <input type="text" class="form-control" placeholder="********" [disabled]="update">
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['password'].hasError('required') && dataGroup.controls['password'].touched">Password
+                    is Required</span>
+                <input type="button" value="Change password" class="btn btn-info" style="margin-top: 10px;"
+                    *ngIf="update" (click)="openPopup(dataGroup.controls['email'].value)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <label>Address:</label>
+                <input type="text" class="form-control" formControlName="address" placeholder="Enter Address">
+                <span class="text-danger"
+                    *ngIf="dataGroup.controls['address'].hasError('required') && dataGroup.controls['address'].touched">Address
+                    is Required</span>
+            </div>
+        </div>
+        <input type="button" value="Submit" class="btn btn-success" *ngIf="!update" on-click="Register(f.value)">
+        <input type="button" value="Update" class="btn btn-primary" *ngIf="update" on-click="Update(f.value)">
+
+    </form>
+
+
+</div>

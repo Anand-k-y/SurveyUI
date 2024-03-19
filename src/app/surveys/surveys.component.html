@@ -1,0 +1,176 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container-fluid" >
+    <!-- <span  class="navigation" routerLink="/dashboard" style="font-size: 30px; font-weight: bold;">Surveys
+        </span> -->
+    <!-- <div class="row " *ngIf="isLoading">
+        <div class="col-12">
+            <div class="loading ">
+                <p><span class="spinner-border spinner-border-sm"></span><span
+                        style="font-size: large; margin-left: 7px;">Loading....</span>
+                <p>
+            </div>
+        </div>
+    </div> -->
+    
+        <div style=" display: flex; ">
+            <p class="navigation">Surveys 
+                <img src="assets\completed-task.png" alt="" height="33px">
+            </p>
+
+        </div>
+        
+       <div style="margin-left: 10px; margin-right: 10px;">
+       
+        <div class="row" style="display: flex; padding: 15px;">
+            <div class="select-option">
+                <h1 >Circle</h1>
+                <select class="form-control" aria-label="Select option" (change)="onCircleChange($event)">
+                    <option value="">--SELECT--</option>
+                    <option *ngFor="let item of circles" value={{item}}>{{item}}</option>
+                </select>
+            </div>
+           <div class="select-option">
+            <h1>Sub Division</h1>
+            <select class="form-control" aria-label="Select option" (change)="onSubDivisionChange($event)">
+                <option value="">--SELECT--</option>
+                <option *ngFor="let item of subDivisions" value={{item}}>{{item}}</option>
+            </select>
+           </div>
+          <div class="select-option">
+            <h1>Surveyor</h1>
+            <select class="form-control" aria-label="Select option" (change)="onSelectionChange($event)">
+                <option value="">--SELECT--</option>
+                <option *ngFor="let item of surveyorList" value={{item.id}}>{{item.name}}</option>
+            </select>
+          </div>
+          <div >
+            <h1>Gateway</h1>
+            <div class="options">
+                <button [class.selected]="selectedType === 'All'" (click)="selectType('All')">All Surveys</button>
+                <button [class.selected]="selectedType === 'Pending'" (click)="selectType('Pending')">Pending
+                    Installation</button>
+                <button [class.selected]="selectedType === 'Installed'" (click)="selectType('Installed')">Installed</button>
+                <a role="button" (click)="Download()" title="Download">
+                    <div class="glyphiconBorder" >
+                        <span class="glyphicon glyphicon-download-alt text-success" ></span>
+                    </div>
+                </a>
+            </div>
+          </div>
+          
+          
+        </div>
+
+        <h3 *ngIf="isPresent" style="margin-bottom: 1px;">*No Surveys Submitted</h3>
+        
+        <div class="table-responsive"
+           >
+            <table class="table table-striped ">
+                <thead style="position:sticky;top:0">
+                    <tr>
+                        <th> ID </th>
+                        <th> SURVEY ID </th>
+                        <th> SUBMITTED BY</th>
+                        <th> NETWORK PROVIDER</th>
+                        <th> RSSI&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                        <th> RF NOISE </th>
+                        <th> NEAREST LANDMARK </th>
+                        <th> LOCATION </th>
+                        <th> AREA TYPE </th>
+                        <th> INSTALLATION TYPE </th>
+                        <th> INSTALLATION IDENTIFIER</th>
+                        <th> ORIENTATION </th>
+                        <th> OBSTACLES </th>
+                        <th> CHANNEL DBM </th>
+                        <th> SUBMISSION DATE</th>
+                        <th> &nbsp;&nbsp;IMAGES</th>
+                        <th> SUPPLY INPUT</th>
+                        <th> CHANGED LOCATION</th>
+                        <th> REMARKS </th>
+                        <th> DEVICE ID</th>
+                        <th> GATEWAY DATA</th>
+
+                    </tr>
+                </thead>
+                <tbody >
+
+                    <tr *ngFor="let survey of surveys">
+                        <td style="font-weight: bold;">{{ survey.id }}</td>
+                        <td>{{survey.surveyId }}</td>
+                        <td>{{survey.userName}}</td>
+                        <td>
+                            <div>
+                                <p>Sim1:{{survey.networkProviderSim1 }}</p>
+                                <p>Sim2:{{survey.networkProviderSim2 }}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <p>{{survey.rssiSim1 }}</p>
+                                <p>{{survey.rssiSim2 }}</p>
+                            </div>
+                        </td>
+                        <td>{{survey.rfNoise }}</td>
+                        <td>{{survey.nearestLandmark }}</td>
+                        <td>
+                           
+                                <a class="btn btn-dmb" (click)="openMapPopup(survey)"
+                                style="color: blue; ">View</a>
+                           
+                        </td>
+                        
+                        <td>{{survey.areaType }}</td>
+                        <td>{{survey.installationType }}</td>
+                        <td>{{survey.installationIdentifier }}</td>
+                        <td>{{survey.orientation }}</td>
+                        <td>{{survey.obstacles }}</td>
+                        <td><a class="btn btn-dmb" (click)="openPopup(survey.channel_Dbm)"
+                                style="color: blue; ">View</a>
+                        </td>
+
+                        <td>{{survey.submissionDate }}</td>
+                        <td>
+                            <div *ngFor="let item of [].constructor(survey.imageCount);let i=index"><a role="button"
+                                    style="color: blue;" (click)="ViewImage(survey.id,i+1)"> Image{{i+1 }}</a> </div>
+                              
+                        </td>
+                        <td>{{survey.supplyInput}}</td>
+                        <td>{{survey.changedLocation}}</td>
+                        <td>{{survey.remarks!=null?survey.remarks:'NA'}}</td>
+                        <td>{{survey.deviceId}}</td>
+                        <td><a class="btn btn-dmb" (click)="openGatewayPopup(survey.jsonData)"
+                            style="color: rgb(255, 255, 255); background-color: rgb(1, 156, 1);" *ngIf="survey.jsonData!='NA'">View</a>
+                            <a class="btn btn-dmb" (click)="openGatewayPopup(survey.jsonData)"
+                            style="background-color: rgb(207, 0, 0); color: white;" *ngIf="survey.jsonData=='NA'">View</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <ul class="pagination" style="margin-left: 40%; margin-top: 10px;">
+                <li class="page-item" [class.disabled]="currentPage === 1">
+                    <a class="page-link" (click)="prevPage()" role="button" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- <li class="page-item" *ngFor="let page of totalPages" [class.disabled]="currentPage === page">
+                <a class="page-link" (click)="goToPage(page)" role="button">{{ page }}</a>
+            </li> -->
+                <li class="page-item">
+                    <a class="page-link">{{ currentPage }}</a>
+                </li>
+                <li class="page-item" [class.disabled]="currentPage === totalPages.length">
+                    <a class="page-link" (click)="nextPage()" role="button" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+
+            </ul>
+            
+        </div>
+        <i >Total Surveys: {{this.totalSurveys}}</i>
+    </div>
+    </div>

@@ -1,0 +1,103 @@
+th{
+    background-color: black;
+    color:whitesmoke;
+    opacity:100%;
+
+  
+}
+td{
+  font-size:14px;
+}
+
+th{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.loading{
+    float: right;
+    height: 60px ;
+    width: 140px;
+    text-align: center;
+    padding-top: 20px;
+    background-color:rgb(194, 235, 253);
+}
+
+.btn:hover{
+    background-color:rgb(203, 231, 255);
+}
+.table{
+    background-color: white;
+}
+
+.navigation{
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: xx-large;
+  }
+  .glyphiconBorder{
+    border: 1px solid black; width: 50px; height: 32px;  padding: 7px; padding-left: 15px; padding-top: 7px; float: right;
+    margin-top: 1px;
+  }
+  .glyphiconBorder:hover{
+    border: 2px solid black;
+  }
+  .vertical-line {
+    height: 1px;
+    background-color: black;
+    margin-top: 39px;
+  }
+  h1{
+    font-family:'Times New Roman', Times, serif;
+    
+    color: black;
+}  
+
+.options button {
+  border: 1px solid black;
+  margin-right: 20px;
+  padding: 5px 10px;
+}
+
+.options button:hover{
+  border: 2px solid black;
+}
+
+.options button.selected {
+  border: 2px solid black;
+  background-color: #008b0c;
+  color: white;
+}
+
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  /* Personalize */
+  width: 20rem;
+  padding: 1rem 1rem 1rem 1rem;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, rgba(255, 255, 255, 0.3) 3em, rgba(255, 255, 255, 0.2) 3em);
+  color: rgb(255, 255, 255);
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background-color: rgb(55, 135, 255);
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+  /* <option> colors */
+  option {
+    
+    color: inherit;
+   
+  }
+}
+.select-option{
+  margin-right: 30px;
+}

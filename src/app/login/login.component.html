@@ -1,0 +1,33 @@
+<div class="main-div" style="margin-top: -30px;">
+    <div class="container" id="container" style="margin: 0px;">
+        <div class="form-container sign-in-container">
+            <form [formGroup]="loginData" #f="ngForm">
+                <h1>User Login</h1>
+                <br>
+                <input type="text" class="form-control" placeholder="Enter Email" formControlName="email" required/>
+                <!-- <span style="color: rgb(226, 6, 6);"
+                *ngIf="loginData.controls['email'].hasError('required') && loginData.controls['email'].touched">
+                 *Email is required</span> -->
+                <input type="password" class="form-control" placeholder="Password" formControlName="password" required />
+                <!-- <span style="color: rgb(226, 6, 6);"
+                *ngIf="loginData.controls['password'].hasError('required') && loginData.controls['password'].touched">
+                 *Password is required</span> -->
+                <!-- <br><a routerLink="/otplogin" >Login via OTP?</a><br> -->
+                <button  on-click="login(f.value)" >Sign In</button>
+                <span *ngIf="returnData" style="color: rgb(226, 6, 6);">Login Failed</span>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+
+                <div class="overlay-panel overlay-right">
+                    <div>
+                        <img src="assets/image001.png" alt="" height="150" width="300">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

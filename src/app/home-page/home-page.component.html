@@ -1,0 +1,233 @@
+<div class="container">
+
+  <div class="panel">
+    <div class="panel-body">
+      <div class="div-transform">
+
+        <div class="card card-1" style="position: relative;">
+          <div style="opacity: 0.15; position: absolute; top: 10px;  right: 10px;">
+            <img src="assets/survey3.png" alt="" height="90px" width="120px">
+          </div>
+          <p>
+            {{data.totalCompletedSurveys}}
+          </p>
+          <h2>Surveys Completed</h2>
+          <h5 routerLink="/surveys">Read More ➡</h5>
+        </div>
+        <div class="card card-2" style="position: relative;">
+          <div style="opacity: 0.15; position: absolute; top: 10px;  right: 10px;">
+            <img src="assets/gateway1.png" alt="" height="80px" width="100px">
+          </div>
+          <p>{{data.totalGatewaysInstalled}}</p>
+          <h2>Gateways Installed</h2>
+          <h5 routerLink="/surveys">Read More ➡</h5>
+        </div>
+
+        <div class="card card-3" style="position: relative;">
+          <div style="opacity: 0.15; position: absolute; top: 8px;  right: 10px;">
+            <img src="assets/survey2.png" alt="" height="90px" width="140px">
+          </div>
+          <p>
+            {{data.surveysToday}}
+          </p>
+          <h2>Surveys Today</h2>
+
+          <h5 routerLink="/surveys">Read More ➡</h5>
+        </div>
+        <div class="card card-4" style="position: relative;">
+          <div style="opacity: 0.35; position: absolute; top: 10px;  right: 10px;">
+            <img src="assets/gateway1.png" alt="" height="80px" width="120px">
+          </div>
+          <p>
+            {{data.totalGatewaysPending}}
+          </p>
+          <h2>Gateways Pending</h2>
+          <h5 routerLink="/surveys">Read More ➡</h5>
+
+        </div>
+        <div class="card card-5" style="position: relative;">
+          <div style="opacity: 0.15; position: absolute; top: 8px;  right: 10px;">
+            <img src="assets/survey2.png" alt="" height="90px" width="140px">
+          </div>
+          <p>
+            {{data.totalPendingSurveys}}
+          </p>
+          <h2>Surveys Pending</h2>
+          <h5 routerLink="/surveyorassignment">Read More ➡</h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="panel">
+    <div class="panel-body">
+      <div>
+        <select [(ngModel)]="selectedYear" style="margin-right: 5px;" (change)="filterData()">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+        <select [(ngModel)]="selectedMonth" (change)="filterData()">
+          <option *ngFor="let month of monthNames" [value]="month">{{ month }}</option>
+        </select>
+
+      </div>
+      <canvas baseChart style="height: 350px; width:100%;" [data]="surveyChartData" [type]="surveyChartType" [options]="{
+                  responsive: true,
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }">
+      </canvas>
+
+
+    </div>
+  </div>
+
+
+  <div>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="table-responsive ">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" class="table table-striped ">
+
+            <!-- Sr.No Column -->
+            <ng-container matColumnDef="srNo">
+              <th mat-header-cell *matHeaderCellDef> Sr.No </th>
+              <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+            </ng-container>
+
+            <!-- Circle Column -->
+            <ng-container matColumnDef="circle">
+              <th mat-header-cell *matHeaderCellDef> CIRCLE </th>
+              <td mat-cell *matCellDef="let element"> {{element.circle}} </td>
+            </ng-container>
+
+            <!-- SUB DIVISION Column -->
+            <ng-container matColumnDef="subDivision">
+              <th mat-header-cell *matHeaderCellDef> SUB DIVISION </th>
+              <td mat-cell *matCellDef="let element"> {{element.subDivision}} </td>
+            </ng-container>
+
+            <!-- SURVEYS COMPLETED Column -->
+            <ng-container matColumnDef="surveysCompleted">
+              <th mat-header-cell *matHeaderCellDef> SURVEYS COMPLETED </th>
+              <td mat-cell *matCellDef="let element"> {{element.surveysCompleted}} </td>
+            </ng-container>
+
+            <!-- SURVEYS PENDING Column -->
+            <ng-container matColumnDef="surveysPending">
+              <th mat-header-cell *matHeaderCellDef> SURVEYS PENDING </th>
+              <td mat-cell *matCellDef="let element"> {{element.surveysPending}} </td>
+            </ng-container>
+
+            <!-- GATEWAYS INSTALLED Column -->
+            <ng-container matColumnDef="gatewaysInstalled">
+              <th mat-header-cell *matHeaderCellDef> GATEWAYS INSTALLED </th>
+              <td mat-cell *matCellDef="let element"> {{element.gatewaysInstalled}} </td>
+            </ng-container>
+
+            <!-- GATEWAYS PENDING Column -->
+            <ng-container matColumnDef="gatewaysPending">
+              <th mat-header-cell *matHeaderCellDef> GATEWAYS PENDING </th>
+              <td mat-cell *matCellDef="let element"> {{element.gatewaysPending}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="surveysToday">
+              <th mat-header-cell *matHeaderCellDef> SURVEYS TODAY </th>
+              <td mat-cell *matCellDef="let element"> {{element.surveysToday}} </td>
+            </ng-container>
+
+            <!-- TOTAL SURVEYS Column -->
+            <ng-container matColumnDef="totalSurveysBySubDivision">
+              <th mat-header-cell *matHeaderCellDef> TOTAL SURVEYS </th>
+              <td mat-cell *matCellDef="let element"> {{element.totalSurveysBySubDivision}} </td>
+            </ng-container>
+
+            <!-- Header and Row Definitions -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <!-- Paginator -->
+          <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <!-- Sr.No Column -->
+          <table mat-table [dataSource]="UserdataSource" class="mat-elevation-z8" class="table table-striped">
+            <ng-container matColumnDef="srNo">
+              <th mat-header-cell *matHeaderCellDef> Sr.No </th>
+              <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+            </ng-container>
+
+            <!-- Contractor Column -->
+            <ng-container matColumnDef="contractor">
+              <th mat-header-cell *matHeaderCellDef> CONTRACTOR / ADMINISTRATOR </th>
+              <td mat-cell *matCellDef="let element"> {{element.contractor}} </td>
+            </ng-container>
+
+            <!-- Surveyor Column -->
+            <ng-container matColumnDef="surveyor">
+              <th mat-header-cell *matHeaderCellDef> SURVEYOR / CONTRACTOR </th>
+              <td mat-cell *matCellDef="let element"> {{element.surveyor}} </td>
+            </ng-container>
+
+            <!-- SURVEYS COMPLETED Column -->
+            <ng-container matColumnDef="surveysCompleted">
+              <th mat-header-cell *matHeaderCellDef> SURVEYS COMPLETED </th>
+              <td mat-cell *matCellDef="let element"> {{element.surveysCompleted}} </td>
+            </ng-container>
+
+            <!-- SURVEYS PENDING Column -->
+            <ng-container matColumnDef="surveysPending">
+              <th mat-header-cell *matHeaderCellDef> SURVEYS PENDING </th>
+              <td mat-cell *matCellDef="let element"> {{element.surveysPending}} </td>
+            </ng-container>
+
+            <!-- GATEWAYS INSTALLED Column -->
+            <ng-container matColumnDef="gatewaysInstalled">
+              <th mat-header-cell *matHeaderCellDef> GATEWAYS INSTALLED </th>
+              <td mat-cell *matCellDef="let element"> {{element.gatewaysInstalled}} </td>
+            </ng-container>
+
+            <!-- GATEWAYS PENDING Column -->
+            <ng-container matColumnDef="gatewaysPending">
+              <th mat-header-cell *matHeaderCellDef> GATEWAYS PENDING </th>
+              <td mat-cell *matCellDef="let element"> {{element.gatewaysPending}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="surveysToday">
+              <th mat-header-cell *matHeaderCellDef> SURVEYS TODAY </th>
+              <td mat-cell *matCellDef="let element"> {{element.surveysToday}} </td>
+            </ng-container>
+
+            <!-- TOTAL SURVEYS Column -->
+            <ng-container matColumnDef="totalSurveysBySubDivision">
+              <th mat-header-cell *matHeaderCellDef> TOTAL SURVEYS </th>
+              <td mat-cell *matCellDef="let element"> {{element.totalSurveysBySubDivision}} </td>
+            </ng-container>
+
+            <!-- Header and Row Definitions -->
+            <tr mat-header-row *matHeaderRowDef="userdisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: userdisplayedColumns;"></tr>
+          </table>
+
+          <!-- Paginator -->
+          <mat-paginator #paginator2 [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</div>

@@ -1,0 +1,15 @@
+<mat-dialog-content>
+    <h2>Survey Transfer</h2>
+     <!-- Display the received value -->
+     <h1>Surveyor</h1>
+     <select class="form-control" aria-label="Select option" (change)="onSelectionChange($event)">
+         <option value="">--SELECT--</option>
+         <option *ngFor="let item of surveyorList" value={{item.id}}>{{item.name}}</option>
+ 
+     </select>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button (click)="Transfer()">Transfer</button>
+  </mat-dialog-actions>

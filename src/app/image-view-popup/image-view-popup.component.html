@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Image Preview
+    <button mat-icon-button mat-dialog-close class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+  
+  <mat-dialog-content>
+    <div >
+        <img [src]="imageSrc" alt="Image" class="img-fluid" height="550px" width="450px">
+    </div>
+    
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <a mat-button [href]="imageSrc" download="{{id}}_image_{{n}}.jpg">Download</a>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>

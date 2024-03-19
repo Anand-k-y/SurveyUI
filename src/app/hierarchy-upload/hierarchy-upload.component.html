@@ -1,0 +1,103 @@
+<div class="page page-datatables">
+  <!-- <div style="opacity: 50%; display: flex;">
+        <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" routerLink="/hierarchy">Tree Hierarchy</span>
+    </div> -->
+  <div class="pagecontent">
+
+      <!-- col -->
+ 
+        <section class="tile" fullscreen="isFullscreen02">
+          <!-- tile header -->
+          <div class="tile-header dvd dvd-btm" style="display: flex">
+            <div style="width: 90%">
+              <p style="font-family: 'Times New Roman', Times, serif; font-size: 30px; font-weight: bold;">Tree Hierarchy</p>
+            </div>
+            <div style="width: 20%">
+              <ul class="controls" style="list-style: none">
+                <li>
+                  <div class="glyphiconBorder">
+                    <a routerLink="/treeHierarchyMaster" title="Add new hierarchy structure"><span
+                        class="glyphicon glyphicon-plus text-success"></span></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="vertical-line"></div>
+          <div>
+
+            <div class="tile-body table-custom">
+              <div class="table-wrapper">
+                <ngx-datatable class="material colored-header sm table table-striped table-hover mt-1"
+                  [rows]="hierarchyData.hierarchyData.rowData" [columns]="columns" [rowHeight]="'auto'"
+                  [headerHeight]="35"  [scrollbarV]="false" [scrollbarH]="true"
+                  [columnMode]="'force'" [reorderable]="reorderable" 
+                  
+                 >
+
+                  <ngx-datatable-column name="SL" prop="Id">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                      {{ row?.Id }}
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="Region Name" prop="HierarchyName">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                      {{ row?.HierarchyName }}
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="No. of Level(s)" prop="NoOfLevel">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                      {{ row?.NoOfLevel }}
+                    </ng-template>
+                  </ngx-datatable-column>
+
+
+                  <!-- Action column template -->
+                  <ngx-datatable-column name="Action">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                      <div>
+                        <button class="btn btn-default" [routerLink]="'/treeHierarchyLevel'"
+                          (click)="onImportClick(row)">
+
+                          Import
+                        </button>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                        <button class="btn btn-default" [routerLink]="'/treeHierarchyView'"
+                          (click)="onViewClick(row?.HierarchyName,row?.Id,row?.ParentId)">
+
+                          View
+                        </button>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                </ngx-datatable>
+              </div>
+            </div>
+            <div>
+              <ul class="pagination" style="margin-left: 40%; margin-top: 10px;">
+                <li class="page-item" [class.disabled]="currentPage === 1">
+                  <a class="page-link" (click)="prevPage()" role="button" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item" *ngFor="let page of totalPages" [class.disabled]="currentPage === page">
+                  <a class="page-link" (click)="goToPage(page)" role="button">{{ page }}</a>
+                </li>
+                <li class="page-item" [class.disabled]="currentPage === totalPages.length">
+                  <a class="page-link" (click)="nextPage()" role="button" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+
+<div class="modal-header">
+    <h1 class="modal-title" id="modal-title">{{type}}</h1>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <form name="serviceForm" novalidate class="form-horizontal">
+      
+      
+  
+
+      <div >
+        
+        <div class="form-group" *ngIf="bool==false">
+            <label class="control-label col-sm-4" for="NodeNumber">Id</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="text"  [(ngModel)]="newRowData.id" name="Id" [disabled]="true"/>
+              
+            </div>
+          </div>
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="nodeName">{{type}}</label>
+          <div class="col-sm-8" *ngIf="type=='AreaType'">
+            <input class="form-control" type="text" [(ngModel)]="newRowData.areaType" name="areaType" />
+          </div>
+          <div class="col-sm-8" *ngIf="type=='InstallationType'">
+            <input class="form-control" type="text" [(ngModel)]="newRowData.installationType" name="installationType" />
+          </div>
+          <div class="col-sm-8" *ngIf="type=='Obstacle'">
+            <input class="form-control" type="text" [(ngModel)]="newRowData.obstacles" name="obstacles" />
+          </div>
+          <div class="col-sm-8" *ngIf="type=='AppVersion'">
+            <input class="form-control" type="text" [(ngModel)]="newRowData.appVersion" name="App Version" />
+          </div>
+        </div>
+
+       
+        </div>
+     
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" *ngIf="bool!=true" (click)="onSaveClick()">Save</button>
+    <button class="btn btn-primary" *ngIf="bool==true" (click)="onAddClick()">Add</button>
+
+    <button class="btn btn-warning" type="button" (click)="onCancelClick()">Cancel</button>
+  </div>

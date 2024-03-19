@@ -1,0 +1,70 @@
+
+
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+
+.app-container {
+    height: 94%;
+    
+}  
+.app-sidenav {
+    width: 235px;
+}
+.app-sidenav-content {
+    display: flex;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+} 
+.display{
+    display: flex;
+}
+  .panel{
+    padding: 0px; padding-right: 10px;
+    margin-bottom: 0px;
+  }
+.main{
+    height: 53px;
+    color: white;
+    background-color:#001457db;
+}
+#list{
+    color: rgb(20 112 193); font-size: 38px;
+}
+.router-div{
+    
+    margin-bottom: 0px;
+    /* background-image: linear-gradient(to bottom right, #ffffff, #b4d2f5); */
+    background-color: #f1f1f1;
+    padding: 10px;
+}
+
+.app-sidenav-icon{
+    width:40px;
+}
+.footer1{
+    padding-top: 10px;
+    width: 100%;
+}
+
+p{
+    font-size: 14px;
+}
+
+.logo{
+    color:#3d89cd ;
+}
+
+
+.menu-items{
+    padding-top:7px; 
+    margin-left: 15px;
+    margin-right: 0px; 
+    font-size: 19px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+p{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}

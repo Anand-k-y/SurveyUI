@@ -1,0 +1,396 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div style="padding: 0px 20px 20px 20px;">
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <a role="button" (click)="showAreaType = !showAreaType">
+                <h1 class="header">Area Type</h1>
+            </a>
+            <div [ngClass]="{'slide-in': showAreaType, 'slide-out': !showAreaType}">
+             
+                <div class="tile-header dvd dvd-btm" style="display: flex">
+                    <div style="width: 85%">
+                      
+                    </div>
+                    <div style="width: 25%">
+                      <ul class="controls" style="list-style: none">
+                        <li>
+                          <div class="glyphiconBorder"
+                          >
+                           <a (click)="openPopup('AreaType')" title="Add new app data"><span
+                            class="glyphicon glyphicon-plus text-success"></span></a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="vertical-line"></div>
+                
+                <div class="table-responsive ">
+                    <table class="table table-striped table-bordered ">
+                        <thead style="position: sticky;top: 0;">
+                            <tr >
+                              
+                                <th> Id </th>
+                                <th>Area Type</th>
+                                <th > Action 
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of areaType">
+                                
+                                <td>{{item.id}}</td>
+                                <td>{{item.areaType }}</td>
+                                <td style="width:20%"> 
+                                  &nbsp;
+                                  &nbsp;
+                                  <a href="javascript:;" (click)="editAreaType(item)" style="color: black;">
+                                    Edit 
+                                    <span class="glyphicon glyphicon-edit" style="color: rgb(223, 2, 2);"></span>
+                                  &nbsp;
+                                  &nbsp;
+                                </a>
+                                  <a href="javascript:;" (click)="deleteAreaType(item)" style="color: black;">
+                                    Delete 
+                                    <span class="glyphicon glyphicon-trash" style="color: rgb(11, 72, 239);"></span>
+                                  </a>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+    
+    <hr>
+
+    <div class="row">
+        <div class="col-12">
+            <a role="button" (click)="showInstallationType = !showInstallationType">
+                <h1 class="header">Installation Type</h1>
+            </a>
+            <div [ngClass]="{'slide-in': showInstallationType, 'slide-out': !showInstallationType}">
+                <div class="tile-header dvd dvd-btm" style="display: flex">
+                    <div style="width: 75%">
+                      
+                    </div>
+                    <div style="width: 25%">
+                      <ul class="controls" style="list-style: none">
+                        <li>
+                          <div style="
+                              border: 1px solid black;
+                              width: 30px;
+                              padding: 5px;
+                              padding-left: 7px;
+                              float: right;
+                              
+                            ">
+                           <a (click)="openPopup('InstallationType')" title="Add new app data"><span
+                            class="glyphicon glyphicon-plus text-success"></span></a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="vertical-line"></div>
+                <div class="table-responsive ">
+                    <table class="table table-striped table-bordered ">
+                        <thead style="position: sticky;top: 0;">
+                            <tr>
+                                
+                                <th> Id </th>
+                                <th> Installation Type </th>
+                               <th> Action
+                               </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of installationType">
+                                
+                                <td>{{item.id }}</td>
+                                <td>{{item.installationType }}</td>
+                                <td style="width:20%"> 
+                                    &nbsp;
+                                    &nbsp;
+                                    <a href="javascript:;" (click)="editNodeInstallation(item)" style="color: black;">
+                                      Edit
+                                      <span class="glyphicon glyphicon-edit" style="color: rgb(223, 2, 2);"></span>
+                                    &nbsp;
+                                    &nbsp;
+                                  </a>
+                                    <a href="javascript:;" (click)="deleteInstallationType(item)" style="color: black;">
+                                      Delete
+                                      <span class="glyphicon glyphicon-trash" style="color: rgb(11, 72, 239);"></span>
+                                    </a>
+                                  </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div>
+                    <ul class="pagination" style="margin-left: 40%; margin-top: 10px;">
+                        <li class="page-item" [class.disabled]="currentUnassignedPage === 1">
+                            <a class="page-link" (click)="prevUnassignedPage()" role="button" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" *ngFor="let page of totalUnassignedPages"
+                            [class.disabled]="currentUnassignedPage === page">
+                            <a class="page-link" (click)="goToUnassignedPage(page)" role="button">{{ page }}</a>
+                        </li>
+                        <li class="page-item" [class.disabled]="currentUnassignedPage === totalUnassignedPages.length">
+                            <a class="page-link" (click)="nextUnassignedPage()" role="button" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                        <li style="margin-left: 2%;">
+                            <input type="button" class="btn btn-success" name="" id="" value="Submit"
+                                (click)="submitSelectedRows()">
+                        </li>
+
+                    </ul>
+                </div> -->
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+    <hr>
+ 
+    <div class="row">
+        <div class="col-12">
+            <a role="button" (click)="showobsatcles = !showobsatcles">
+                <h1 class="header">Obstacles</h1>
+            </a>
+            <div [ngClass]="{'slide-in': showobsatcles, 'slide-out': !showobsatcles}">
+                <div class="tile-header dvd dvd-btm" style="display: flex">
+                    <div style="width: 75%">
+                      
+                    </div>
+                    <div style="width: 25%">
+                      <ul class="controls" style="list-style: none">
+                        <li>
+                          <div style="
+                              border: 1px solid black;
+                              width: 30px;
+                              padding: 5px;
+                              padding-left: 7px;
+                              float: right;
+                              
+                            ">
+                           <a (click)="openPopup('Obstacle')" title="Add new app data"><span
+                            class="glyphicon glyphicon-plus text-success"></span></a>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="vertical-line"></div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered ">
+                        <thead style="position: sticky;top: 0;">
+                            <tr >
+                                <th> Id </th>
+                                <th> Obstacles </th>
+                                <th> Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of obstacle">
+                                <td>{{item.id }}</td>
+                                <td>{{item.obstacles }}</td>
+                                <td style="width:20%"> 
+                                    &nbsp;
+                                    &nbsp;
+                                    <a href="javascript:;" (click)="editNodeObstacle(item)" style="color: black;">
+                                      Edit
+                                      <span class="glyphicon glyphicon-edit" style="color: rgb(223, 2, 2);"></span>
+                                    &nbsp;
+                                    &nbsp;
+                                  </a>
+                                    <a href="javascript:;" (click)="deleteObstacle(item)" style="color: black;">
+                                      Delete
+                                      <span class="glyphicon glyphicon-trash" style="color: rgb(11, 72, 239);"></span>
+                                    </a>
+                                  </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- <div>
+                    <ul class="pagination" style="margin-right: 40; margin-top: 10px;">
+                        <li class="page-item" [class.disabled]="currentPendingPage === 1">
+                            <a class="page-link" (click)="prevPage()" role="button" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item" *ngFor="let page of totalPendingPages"
+                            [class.disabled]="currentPendingPage === page">
+                            <a class="page-link" (click)="goToPage(page)" role="button">{{ page }}</a>
+                        </li>
+                        <li class="page-item" [class.disabled]="currentPendingPage === totalPendingPages.length">
+                            <a class="page-link" (click)="nextPage()" role="button" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-8">
+          <a role="button" (click)="showOtpByPass = !showOtpByPass">
+              <h1 class="header">OTP ByPass</h1>
+          </a>
+          <div [ngClass]="{'slide-in': showOtpByPass, 'slide-out': !showOtpByPass}">
+            
+            <div class="vertical-line"></div>
+              
+                  <label>OTP ByPass</label>
+                  <select class="form-control" aria-label="Select option" 
+                      style="color: rgb(116, 116, 116);">
+                      <option value="1" selected>True</option>
+                      <option value="0">False</option>
+                  </select>
+            <br>
+                  <input type="button" class="btn btn-info" value="Save">
+
+          </div>
+
+
+      </div>
+
+
+
+  </div>
+  <!-- <hr>
+ 
+  <div class="row">
+      <div class="col-12">
+          <a role="button" (click)="showAppVersion = !showAppVersion">
+              <h1 class="header">App Version</h1>
+          </a>
+          <div [ngClass]="{'slide-in': showAppVersion, 'slide-out': !showAppVersion}">
+              <div class="tile-header dvd dvd-btm" style="display: flex">
+                  <div style="width: 75%">
+                    
+                  </div>
+                  <div style="width: 25%">
+                    <ul class="controls" style="list-style: none">
+                      <li>
+                        <div style="
+                            border: 1px solid black;
+                            width: 30px;
+                            padding: 5px;
+                            padding-left: 7px;
+                            float: right;
+                            
+                          ">
+                        
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="vertical-line"></div>
+              <div class="table-responsive">
+                  <table class="table table-striped table-bordered ">
+                      <thead style="position: sticky;top: 0;">
+                          <tr >
+                              <th> Id </th>
+                              <th>Current App Version </th>
+                              <th> Action
+                              </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                         <tr>
+                              <td>{{appVersions.id }}</td>
+                              <td>{{appVersions.appVersion }}</td>
+                              <td style="width:20%"> 
+                                  &nbsp;
+                                  &nbsp;
+                                  <a href="javascript:;" (click)="editNodeVersion(appVersions)" style="color: black;">
+                                    Edit
+                                    <span class="glyphicon glyphicon-edit" style="color: rgb(223, 2, 2);"></span>
+                                  &nbsp;
+                                  &nbsp;
+                               </a>
+                                </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+
+
+               <div>
+                  <ul class="pagination" style="margin-right: 40; margin-top: 10px;">
+                      <li class="page-item" [class.disabled]="currentPendingPage === 1">
+                          <a class="page-link" (click)="prevPage()" role="button" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                          </a>
+                      </li>
+                      <li class="page-item" *ngFor="let page of totalPendingPages"
+                          [class.disabled]="currentPendingPage === page">
+                          <a class="page-link" (click)="goToPage(page)" role="button">{{ page }}</a>
+                      </li>
+                      <li class="page-item" [class.disabled]="currentPendingPage === totalPendingPages.length">
+                          <a class="page-link" (click)="nextPage()" role="button" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                          </a>
+                      </li>
+
+                  </ul>
+              </div> 
+          </div>
+
+      </div>
+  </div> -->
+  <hr>
+  <div class="row">
+    <div class="col-8">
+        <a role="button" (click)="showAppVersion = !showAppVersion">
+            <h1 class="header">Bridge AppVersion</h1>
+        </a>
+        <div [ngClass]="{'slide-in': showAppVersion, 'slide-out': !showAppVersion}">
+          
+          <div class="vertical-line"></div>
+            
+                <label>App Versions</label>
+               <input type="text" class="form-control" [(ngModel)]="appVersions">
+          <br>
+                <input type="button" class="btn btn-info" value="Save" (click)="SetAppVersion()">
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+</div>

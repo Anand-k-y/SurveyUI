@@ -1,0 +1,157 @@
+.container {
+    margin-top: 20px;
+    width: 100%;
+    perspective: 90rem;
+    perspective-origin: 30% 60%;
+  }
+  .navigation{
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: xx-large;
+  }
+  .div-transform { 
+    display: flex; 
+  }
+
+  .card {
+    border-radius: 5px;
+    height: 140px;
+    color: #fff;
+    padding-top: 18px ;
+    width: 370px;
+    transition: 0.5s ease;
+    transform: translate(0);
+    
+  }
+  @media screen and (max-width: 1600px) {
+    .card p ,.card h2 {
+      font-size: 14px;
+    }
+    .card h5 {
+        font-size: 9px;
+    }
+    .card p{
+      font-size: 5px;
+    }
+    
+  }
+  @media screen and (max-width: 1026px) {
+   
+   
+    
+    .card div img {
+      height: 60px;
+      width: 90px;
+    }
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.85;
+  }
+  
+  .card h2 {
+    
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    cursor:default;
+   
+  }
+  .card p{
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    cursor:default;
+  }
+  
+  .card h5 {
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;   
+    width: 100%;
+    font-size: 10px;
+    cursor:default;
+    margin-top: 20px;
+    padding-top: 4px;
+    height: 25px;
+    transition: 0.5s ease;
+    transform: scale(1);
+  }
+  .card h2, .card h5 , .card p {    
+    padding-left: 10px;
+  }
+  .card-1 ,.card-2,.card-3,.card-4{
+    background-size: cover;
+    margin-right: 10px;
+  }
+  .card-1::before  {
+    background: linear-gradient(60deg,#204cdd,rgba(166, 149, 240, 0.637));
+  }
+  .card-1 h5{
+    background: linear-gradient(60deg,#204cdd6b,rgba(166, 149, 240, 0.281));    
+  }
+  .card-1 h5:hover{
+    cursor: pointer;
+    transform: scaleY(1.2);
+    box-shadow: 0px 10px 20px -7px #0033da;
+  }
+
+  .card-2::before {
+    background: linear-gradient(60deg,#00ac17,rgba(113, 255, 100, 0.877));
+  }
+  .card-2 h5{
+    background: linear-gradient(60deg,#00ac17b6,rgba(50, 255, 31, 0.473));
+  }
+  .card-2 h5:hover{
+    cursor: pointer;
+    transform: scaleY(1.2);
+    box-shadow: 0px 10px 20px -7px #00ac17;
+  }
+
+  .card-3::before{
+    background: linear-gradient(60deg,#0033da,rgba(120, 105, 187, 0.663));
+  }
+  .card-3 h5{
+    background: linear-gradient(60deg,#0033da73,rgba(120, 105, 187, 0.308));
+  }
+  .card-3 h5:hover{
+    cursor: pointer;
+    transform: scaleY(1.2);
+    box-shadow: 0px 10px 20px -7px #0033da;
+  }
+
+  .card-4::before{
+    background: linear-gradient(90deg, #248d2a 0%, #02881f 100%);
+  }
+  .card-4 h5{
+    background: linear-gradient(90deg, #248d29a6 0%, #02881f70 100%);
+  }
+  .card-4 h5:hover{
+    cursor: pointer;
+    transform: scaleY(1.2);
+    box-shadow: 0px 10px 20px -7px #27c03c;
+  }
+  .card-5 {
+    background-size: cover; 
+  } 
+  .card-5::before,.card-5 h5 {
+    background: linear-gradient(45deg,#9b2639,#f31f42);
+  }
+  .card-5 h5{
+    background: linear-gradient(45deg,#9b26398a,#f31f426b);
+
+  }
+  .card-5 h5:hover{
+    cursor: pointer;
+    transform:scaleY(1.2);
+    box-shadow: 0px 10px 20px -7px #f31f42;
+  }
+
+  td ,tr ,th {
+    height: 30px; /* Adjust the height as needed */
+  }
+  
+  

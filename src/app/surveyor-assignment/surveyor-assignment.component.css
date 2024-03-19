@@ -1,0 +1,114 @@
+.container{
+    margin-top: 20px;
+}
+
+h1{
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 500;
+    color: black;
+}   
+    
+th,td{
+    padding: 8px;
+    
+}
+
+
+
+.table-responsive{
+  margin-top: 30px;
+}
+
+.btn-danger{
+  font-size:16px;
+  height: 35px; 
+  margin-left: 10px; 
+  padding-top: 4px;
+}
+
+.header{
+  font-weight:600;
+  font-family:'Times New Roman', Times, serif;
+  padding: 5px;
+  background-color: #0075ff96;
+  	box-shadow: 0 0px 0px 0px rgb(50, 255, 204), 
+			0 0px 7px 0px rgb(19, 53, 41);
+  text-align: center;
+
+}
+.navigation{
+  font-family: 'Times New Roman', Times, serif; 
+  font-size: xx-large;
+}
+.slide-in {
+  max-height: 1000px; /* Adjust the value based on your content */
+  transition: max-height 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.slide-out {
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+  overflow: hidden;
+}
+.vertical-line {
+  height: 1px;
+  background-color: black;
+  margin-top: 51px;
+  margin-bottom: 20px;
+}
+.header:hover{
+  background-color:  #467cb9;
+}
+
+th{
+  font-weight: 500;
+}
+.glyphiconBorder{
+  border: 2px solid black; width: 40px; height: 40px;  padding: 10px; padding-left: 11px; float: right;
+}
+.options button {
+  margin-right: 10px;
+  
+  height: 28px;
+}
+
+.options button.selected {
+  background-color: #2b8b33;
+  color: white;
+}
+
+section {
+  margin-top: 20px;
+}
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  /* Personalize */
+  width: 20rem;
+  padding: 1rem 4rem 1rem 1rem;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, rgba(255, 255, 255, 0.3) 3em, rgba(255, 255, 255, 0.2) 3em);
+  color: rgb(255, 255, 255);
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background-color: rgb(0, 84, 211);
+  margin-right: 20px;
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+  /* <option> colors */
+  option {
+    color: inherit;
+    
+  }
+}

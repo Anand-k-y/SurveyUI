@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<div class="container-fluid">
+  <div class="row" style="display: flex;" *ngIf="isLoading">
+    <div class="loading">
+      <p>
+        <span class="spinner-border spinner-border-sm"></span>
+        <span style="font-size: large; margin-left: 7px;">Loading....</span>
+      <p>
+    </div>
+  </div>
+  <div style="opacity: 50%; display: flex;">
+    <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;"routerLink="/dashboard">User Enrollment</span>
+    <mat-icon>navigate_next</mat-icon>
+    <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" routerLink="/UserEnrollment/Administrator"
+      role="button">Administrator</span>
+  </div>
+  <ul class="controls" style="list-style: none; ">
+    <li>
+      <a routerLink="/UserEnrollment/Administrator/Form/0" title="Add Administrator">
+        <div
+          style="border: 2px solid black; width: 40px; height: 40px;  padding: 10px; padding-left: 11px; float: right;">
+          <span class="glyphicon glyphicon-plus text-success"></span>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a role="button" (click)="DownloadExcel()" title="Export">
+        <div
+          style="border: 2px solid black; width: 40px; height: 40px;  padding: 10px; padding-left: 11px; float: right; margin-right: 2px;">
+          <span class="glyphicon glyphicon-download-alt text-success"></span>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="vertical-line"></div>
+  <div>
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-12">
+          <label>Role</label>
+          <select class="form-control" aria-label="Select option" 
+              style="color: rgb(116, 116, 116);" on-change="onSelectChange($event)" >
+              <option value="">--Select--</option>
+              <option value="Administrator" >Administrator</option>
+              <option value="NetworkPlanner" >Network Planner</option>
+              <option value="Contractor" >Contractor</option>
+              <option value="Surveyor" >Surveyor</option>
+            <option value="Dashboard" >View All Users</option>
+              
+
+          </select>
+
+      </div>
+  </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped ">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Mobile No</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Role</th>
+          <th>Contractor</th>
+          <th>Agency Name</th>
+          <th>Contact Person</th>
+          <th>Area Assigned</th>
+          <th>Device Id</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.mobileNo }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.address }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.contractor }}</td>
+          <td>{{ user.agencyName }}</td>
+          <td>{{ user.contactPerson }}</td>
+          <td>{{ user.areaAssigned }}</td>
+          <td>{{ user.deviceId }}</td>
+          <td style="display: flex;">
+            <div>
+              <button class="edit" (click)="OpenForm(user.id,user.role)"><span
+                  class="edit-icon"></span><span>Edit</span></button>
+            </div>
+            <div style="float: right;">
+              <button (click)="Delete(user.id)" class="btn btn-danger"><i class="fa fa-trash-o"></i>  Delete </button>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <ul class="pagination" style="margin-left: 40%; margin-top: 10px;">
+
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="prevPage()" role="button" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let page of totalPages" [class.disabled]="currentPage === page">
+        <a class="page-link" (click)="goToPage(page)" role="button">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages.length">
+        <a class="page-link" (click)="nextPage()" role="button" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+
+</div>

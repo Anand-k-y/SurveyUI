@@ -1,0 +1,26 @@
+
+<h1 style="text-align: center;" mat-dialog-title>Location Info</h1>
+    <div mat-dialog-content>
+      <!-- Your custom content goes here -->
+      <div >
+        <div >
+            <p>Planned Location: <i>{{survey.plannedLatitude}},{{survey.plannedLongitude}}</i></p>
+            
+        </div>
+        <div >
+            <p>Surveyed Location: <i>{{survey.latitude}},{{survey.longitude}}</i></p>
+            
+        </div>
+        <div >
+            <p>Installed Location: <i>NA</i></p>
+            
+        </div>
+      </div>
+      <button class="btn" id="mapbutton">
+        <a href="{{url}}" target="_blank" style="text-decoration: none; color: aliceblue;">Open in Map</a>
+      </button>
+     
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button color="primary" (click)="onOkClick()">OK</button>
+    </div>

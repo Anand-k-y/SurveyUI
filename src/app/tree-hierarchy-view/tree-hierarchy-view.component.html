@@ -1,0 +1,152 @@
+<div class="page page-datatables">
+  <div style="opacity: 50%; display: flex;">
+    <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" routerLink="/hierarchy">Tree
+      Hierarchy</span>
+    <mat-icon>navigate_next</mat-icon>
+    <span style="font-family: 'Times New Roman', Times, serif; font-size: x-large;" role="button"
+      routerLink="/treeHierarchyView">View</span>
+  </div>
+  <div class="pull-right">
+    <label style="font-size:xx-small;color:red">{{ 'DoubleClickToEdit' }}
+    </label>
+  </div>
+  <div class="pagecontent">
+    <div class="row">
+
+      <div class="col-md-12">
+        <section class="tile" fullscreen="isFullscreen02">
+
+          <div>
+            <div class="tile-header dvd dvd-btm">
+              <h1 class="custom-font">
+                <strong>View Hierarchy : {{HierarchyName}}</strong>
+
+              </h1>
+              <ul class="controls" style="list-style: none; padding-bottom: 22px;">
+                <li>
+                  <a class="glyphiconBorder" href="javascript:;" [routerLink]="'/treeHierarchyLevel'"
+                    title="Upload Hierarchy"><span class="glyphicon glyphicon-upload text-success"></span></a>
+                </li>
+                <li>
+                  <a class="glyphiconBorder" href="javascript:;" (click)="refresh()" title="Reload Hierarchy"><span
+                      class="glyphicon glyphicon-refresh text-success"></span></a>
+                </li>
+
+              </ul>
+
+            </div>
+            <div class="vertical-line"></div>
+          </div>
+
+          <div class="tile-body">
+            <div class="table-container">
+
+
+              <div>
+                <ng-container
+                  *ngTemplateOutlet="recursiveTree; context: { $implicit: dataSource.data, level: 0 }"></ng-container>
+
+
+                <ng-template #recursiveTree let-nodes let-level="level">
+
+                  <div>
+                    <li *ngIf="level === 0" style="list-style: none;">
+                      <table mat-table class="mat-elevation-z8">
+                        <ng-container *ngFor="let column of gridOptions.columnDefs">
+                          <ng-container [matColumnDef]="column.name">
+
+                            <th mat-header-cell *matHeaderCellDef style="text-align: left;">
+
+                              {{ column.displayName }}
+                            </th>
+
+
+                          </ng-container>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="columnFieldNames"></tr>
+
+                        <tr mat-row *matRowDef="let row; columns: columnFieldNames; "></tr>
+
+                      </table>
+                    </li>
+                  </div>
+
+                  <ul style="list-style: none;" class="ul">
+                    <li *ngFor="let node of nodes">
+
+                      <div [style.marginLeft.px]="level ">
+                        <table style="width:100%">
+                          <tr>
+                            <td style="width: 0%"> <button mat-icon-button (click)="toggleNode(node)">
+                                <span
+                                  [class]="expandedStates[node.Id] ? 'glyphicon glyphicon-minus' : 'glyphicon glyphicon-plus'"></span>
+                              </button>
+                            </td>
+                            <td style="width:10%">{{ node.NodeType }}</td>
+                            <td style="width:10%">{{ node.NodeName }}</td>
+                            <td style="width:15%">{{node.NodeNumber}}</td>
+                            <td style="width:15%">{{node.IsOnParentDevice}}</td>
+                            <td style="width:20%"> <a href="javascript:;" (click)="editRow(node)" style="color: black;">
+                                Edit Node
+                                <span class="glyphicon glyphicon-edit" style="color: rgb(65, 57, 57);"></span>
+                              </a>
+                              &nbsp;
+                              &nbsp;
+                              <a href="javascript:;" (click)="addRow(node)" style="color: black;">
+                                Add Node
+                                <span class="glyphicon glyphicon-plus" style="color: rgb(223, 2, 2);"></span>
+                                &nbsp;
+                                &nbsp;
+                              </a>
+                              <a href="javascript:;" (click)="deleteRow(node)" style="color: black;">
+                                Delete Node
+                                <span class="glyphicon glyphicon-trash" style="color: rgb(11, 72, 239);"></span>
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+
+
+                      <div *ngIf="node.children && node.children.length > 0 && node.expanded">
+                        <ng-container
+                          *ngTemplateOutlet="recursiveTree; context: { $implicit: node.children, level: level + 1 }"></ng-container>
+                      </div>
+                    </li>
+
+                  </ul>
+                </ng-template>
+
+              </div>
+            </div>
+
+            <img src="https://cdn.dribbble.com/users/11609495/screenshots/18251844/hourglass.gif" height="20"
+              alt="Loading..." *ngIf="isLoading" />
+            <div *ngIf="isHierarchyEmpty">
+              No Data Found!
+              <a [routerLink]="'/treeHierarchyLevel'">Click here&nbsp;&nbsp; »</a>
+              to upload hierarchy.
+            </div>
+
+            <div *ngIf="!isLoading && !isHierarchyEmpty">
+              <div id="grid1" ui-grid="gridOptions" ui-grid-edit ui-grid-tree-view ui-grid-exporter class="grid"></div>
+
+            </div>
+
+
+
+          </div>
+
+
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <button class="btn btn-default" routerLink="/hierarchy" style="float: right; margin-top: 4px;">{{ 'Back'
+    }}</button>
+</div>

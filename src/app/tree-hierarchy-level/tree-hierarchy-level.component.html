@@ -1,0 +1,75 @@
+<div class="page page-grid">
+    <div style="opacity: 50%; display: flex;">
+        <span class="font" routerLink="/hierarchy">Tree Hierarchy</span>
+        <mat-icon>navigate_next</mat-icon>
+        <span class="font" role="button" routerLink="/treeHierarchyLevel">Import</span>
+    </div>
+    <section class="tile" fullscreen="isFullscreen07">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Import Hierarchy</strong></h1>
+
+        </div>
+        <!-- tile body -->
+        <div class="tile-body">
+
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" id="panel_style">Step 1: Download Hierarchy Format File</div>
+                    <div class="panel-body">
+
+                        <div class="row">
+
+                            <div class="col-md-4" style="padding: 10px;">HierarchyName :
+                                <strong>{{HierarchyName}}</strong></div>
+                            <div class="col-md-8" style="padding: 10px;">
+                                <button class="btn btn-primary" id="downloadButton1" (click)="DownloadSampleFile()"
+                                    class="button">Download File</button>
+                            </div>
+                            <div class=" row" *ngIf="isDownloading">
+                                <div class="form-group col-md-1">
+                                    <img src="https://cdn.dribbble.com/users/11609495/screenshots/18251844/hourglass.gif"
+                                        height="20" alt="Loding..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" id="panel_style">Step 2: Upload Hierarchy In Downloaded Format</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input name="uploadFileinput" accept=".xls,.xlsx" ui-jq="filestyle" type="file"
+                                    upload-files class="filestyle" (change)="onFileChange($event)"
+                                    ui-options="{buttonText: 'Browse' ,iconName: 'glyphicon glyphicon-inbox'}"
+                                    style="padding: 10px">
+                            </div>
+                            <div class="col-md-8" style="padding: 10px">
+                                <button class="btn btn-primary" id="uploadButton1" (click)="UploadFile()"
+                                    class="button">Upload
+                                    File</button>
+                            </div>
+
+                        </div>
+                        <div class="">
+                            <label style="font-size:xx-small; padding-top:  20px;">NOTE: Excel file is used for
+                                adding/appending the
+                                hierarchy. For
+                                editing, please use node edit option in hierachy view. </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <img src="https://cdn.dribbble.com/users/11609495/screenshots/18251844/hourglass.gif" height="20"
+                    alt="Loding..." *ng-if="isUploading" />
+
+            </div>
+        </div>
+    </section>
+    <button class="btn btn-default" routerLink="/hierarchy" style="float: right;">{{ 'Back'
+        }}</button>
+</div>

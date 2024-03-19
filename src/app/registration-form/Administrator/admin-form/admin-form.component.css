@@ -1,0 +1,35 @@
+.row{
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+
+.col1{
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.btn{
+ 
+    background-color: rgb(97, 32, 32);
+}
+.btn:hover{
+    border: 2px solid black;
+}
+label{
+    font-size: large;
+    font-weight:normal;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 48;
+  margin-top: 2px;
+}
+.vertical-line {
+    height: 1px;
+    background-color: black;
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }

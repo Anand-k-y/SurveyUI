@@ -1,0 +1,72 @@
+.collapseButton {
+  vertical-align: text-top;
+}
+
+
+
+#hidden {
+  display: none;
+}
+.glyphiconBorder{
+  
+  border: 1px solid black;
+  width: 30px;
+  padding: 5px;
+  padding-left: 7px;
+  float: right;
+ margin-bottom: 30px;
+}
+
+
+table {
+  border-collapse: collapse;
+}
+
+table tr:nth-child(even) {
+  background-color: #9ea9cc;
+  color: rgb(4, 3, 3);
+}
+
+table tr:nth-child(odd) {
+  background-color: #9ba4c2;
+  color: rgb(12, 10, 10);
+}
+
+table th {
+  background-color: #9ea9cf;
+}
+
+table th,
+td {
+  /* border: 1px solid black; */
+  /* padding: 1em; */
+  text-align: center;
+}
+
+#collapseButton:hover {
+  background-color: #9aa0b1;
+}
+.vertical-line {
+  height: 1px;
+  background-color: black;
+  /* margin-bottom: 30px; */
+  /* margin-top: 40px; */
+} /* Example styling for the glyphicon icons */
+.glyphicon {
+  font-size: 16px;
+  /* margin-top: 40px; */
+
+   /* Adjust the font size as needed */
+  /* Add any other custom styles */
+  
+}
+/* tr{
+  border: 1px solid black;
+  
+} */
+
+.ul{
+  padding-left: 15px;
+  background-color: #9ba4c2;
+}
+
